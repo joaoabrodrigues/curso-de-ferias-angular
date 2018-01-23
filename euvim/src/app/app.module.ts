@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { AppComponent } from './app.component';
-import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { MainModule } from './main/main.module';
+import { AppRoutingModule } from './app.routing';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,13 +14,11 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule
+    RouterModule,
+    MainModule,
+    AppRoutingModule
   ],
-  providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
-  ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 
