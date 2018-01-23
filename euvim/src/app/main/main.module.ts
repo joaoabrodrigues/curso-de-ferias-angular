@@ -11,6 +11,9 @@ import { MatSidenavModule,
          MatToolbarModule, 
          MatCardModule } from '@angular/material';
 
+import { ConsultaComponent } from './usuario/consulta/consulta.component';
+import { FormularioComponent } from './usuario/formulario/formulario.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -21,8 +24,8 @@ import { MatSidenavModule,
     MatListModule,
     MatToolbarModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
   ],
-  declarations: [MainComponent]
+  declarations: [MainComponent, ConsultaComponent, FormularioComponent]
 })
 export class MainModule { }
