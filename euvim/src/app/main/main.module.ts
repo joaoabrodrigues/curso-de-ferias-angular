@@ -12,7 +12,8 @@ import { MatSidenavModule,
          MatCardModule,
          MatTableModule,
          MatFormFieldModule,
-         MatInputModule } from '@angular/material';
+         MatInputModule, 
+         MatTooltipModule} from '@angular/material';
 
 import { ConsultaComponent } from './usuario/consulta/consulta.component';
 import { FormularioComponent } from './usuario/formulario/formulario.component';
@@ -29,7 +30,8 @@ import { FormularioComponent } from './usuario/formulario/formulario.component';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatTooltipModule
   ],
   declarations: [MainComponent, ConsultaComponent, FormularioComponent]
 })

@@ -14,7 +14,7 @@ export class ConsultaComponent implements OnInit {
   } 
 
   displayedColumns = ['nome', 'login', 'email', 'perfil', 'id'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(USUARIO_DATA);
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
@@ -23,13 +23,13 @@ export class ConsultaComponent implements OnInit {
   }
 }
 
-const ELEMENT_DATA: Element[] = [
+const USUARIO_DATA: Usuario[] = [
   {id: 1, nome: 'Nome 1', login: 'login1', email: 'email1@gmail.com', perfil: 'Perfil 1'},
   {id: 2, nome: 'Nome 2', login: 'login2', email: 'email2@gmail.com', perfil: 'Perfil 2'},
   {id: 3, nome: 'Nome 3', login: 'login3', email: 'email3@gmail.com', perfil: 'Perfil 3'},
 ];
 
-export interface Element {
+export interface Usuario {
   id: number;
   nome: string;
   login: string;
