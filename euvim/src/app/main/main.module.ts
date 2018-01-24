@@ -9,7 +9,10 @@ import { MatSidenavModule,
          MatIconModule,
          MatListModule, 
          MatToolbarModule, 
-         MatCardModule } from '@angular/material';
+         MatCardModule,
+         MatTableModule,
+         MatFormFieldModule,
+         MatInputModule } from '@angular/material';
 
 import { ConsultaComponent } from './usuario/consulta/consulta.component';
 import { FormularioComponent } from './usuario/formulario/formulario.component';
@@ -25,7 +28,10 @@ import { FormularioComponent } from './usuario/formulario/formulario.component';
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
+    MatInputModule,
+    MatTableModule
   ],
   declarations: [MainComponent, ConsultaComponent, FormularioComponent]
 })
+
 export class MainModule { }
