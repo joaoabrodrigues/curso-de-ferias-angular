@@ -13,10 +13,14 @@ import { MatSidenavModule,
          MatTableModule,
          MatFormFieldModule,
          MatInputModule, 
-         MatTooltipModule} from '@angular/material';
+         MatTooltipModule,
+         MatOptionModule, 
+         MatSelectModule} from '@angular/material';
 
 import { ConsultaComponent } from './usuario/consulta/consulta.component';
 import { FormularioComponent } from './usuario/formulario/formulario.component';
+
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 @NgModule({
   imports: [
@@ -31,7 +35,10 @@ import { FormularioComponent } from './usuario/formulario/formulario.component';
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatOptionModule,
+    MatSelectModule,
+    FlexLayoutModule
   ],
   declarations: [MainComponent, ConsultaComponent, FormularioComponent]
 })

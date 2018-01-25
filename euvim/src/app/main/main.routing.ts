@@ -15,7 +15,7 @@ import { FormularioComponent } from './usuario/formulario/formulario.component';
                       component: ConsultaComponent
                   },
                   {
-                    path: 'usuario/formulario',
+                    path: 'usuario/adicionar',
                     component: FormularioComponent
                   }
               ]
