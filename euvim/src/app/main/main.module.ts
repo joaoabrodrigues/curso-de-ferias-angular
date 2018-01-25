@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main.component';
 import { RouterModule } from '@angular/router';
 import { MainRouting } from './main.routing';
-
+import { ConsultaComponent } from './usuario/consulta/consulta.component';
+import { FormularioComponent } from './usuario/formulario/formulario.component';
+import { FlexLayoutModule } from '@angular/flex-layout'
 import { MatSidenavModule,
          MatButtonModule,
          MatIconModule,
@@ -15,14 +17,10 @@ import { MatSidenavModule,
          MatInputModule, 
          MatTooltipModule,
          MatOptionModule, 
-         MatSelectModule} from '@angular/material';
-
-import { ConsultaComponent } from './usuario/consulta/consulta.component';
-import { FormularioComponent } from './usuario/formulario/formulario.component';
-
-import { FlexLayoutModule } from '@angular/flex-layout'
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+         MatSelectModule } from '@angular/material';
+import { FormsModule, 
+         ReactiveFormsModule, 
+         FormBuilder } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -44,7 +42,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [MainComponent, ConsultaComponent, FormularioComponent]
+  declarations: [
+    MainComponent, 
+    ConsultaComponent, 
+    FormularioComponent
+  ],
+  providers: [FormBuilder]
 })
 
 export class MainModule { }

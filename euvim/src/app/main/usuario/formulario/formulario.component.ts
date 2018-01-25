@@ -10,9 +10,9 @@ import { FormBuilder } from '@angular/forms';
 export class FormularioComponent implements OnInit {
   public usuarioForm: FormGroup;
   public perfis = [
-    {id: 1, descricao: 'Administrador'},
-    {id: 2, descricao: 'Aluno'},
-    {id: 3, descricao: 'Professor'}
+    {id: 'ADMINISTRADOR', descricao: 'Administrador'},
+    {id: 'ALUNO', descricao: 'Aluno'},
+    {id: 'PROFESSOR', descricao: 'Professor'}
   ];
 
   constructor(private formBuilder: FormBuilder){
