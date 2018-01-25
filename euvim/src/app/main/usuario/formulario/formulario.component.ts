@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms/src/model';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EqualsPasswordValidator } from '../../../validators/EqualsPasswordValidator';
 
 @Component({
   selector: 'app-formulario',
@@ -15,21 +15,24 @@ export class FormularioComponent implements OnInit {
     {id: 'PROFESSOR', descricao: 'Professor'}
   ];
 
-  constructor(private formBuilder: FormBuilder){
+  constructor(private _formBuilder: FormBuilder){
     this.createForm();
   }
 
   ngOnInit() { }
 
   createForm() {
-    this.usuarioForm = this.formBuilder.group({
-      nome: [],
-      email: [],
-      login: [],
-      perfil: [],
-      senha: [],
-      confirmacao: []
+    this.usuarioForm = this._formBuilder.group({
+      id: '',
+      nome: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      login: ['', Validators.required],
+      perfil: ['', Validators.required],
+      senha: ['', Validators.required],
+      confirmacao: ['', Validators.required]
+    },{
+      validator : EqualsPasswordValidator.validate("senha", "confirmacao")
     })
-  }
+}
 
 }
