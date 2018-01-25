@@ -22,6 +22,8 @@ import { FormularioComponent } from './usuario/formulario/formulario.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout'
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -38,7 +40,9 @@ import { FlexLayoutModule } from '@angular/flex-layout'
     MatTooltipModule,
     MatOptionModule,
     MatSelectModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [MainComponent, ConsultaComponent, FormularioComponent]
 })

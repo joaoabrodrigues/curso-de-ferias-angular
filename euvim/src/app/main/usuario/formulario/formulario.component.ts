@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms/src/model';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario',
@@ -6,16 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent implements OnInit {
-
+  public usuarioForm: FormGroup;
   public perfis = [
-    {id: 1, descricao: 'Perfil 1'},
-    {id: 2, descricao: 'Perfil 2'},
-    {id: 3, descricao: 'Perfil 3'}
-  ]
+    {id: 1, descricao: 'Administrador'},
+    {id: 2, descricao: 'Aluno'},
+    {id: 3, descricao: 'Professor'}
+  ];
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder){
+    this.createForm();
+  }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  createForm() {
+    this.usuarioForm = this.formBuilder.group({
+      nome: [],
+      email: [],
+      login: [],
+      perfil: [],
+      senha: [],
+      confirmacao: []
+    })
   }
 
 }

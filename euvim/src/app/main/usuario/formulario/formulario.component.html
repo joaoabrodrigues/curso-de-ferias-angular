@@ -1,32 +1,34 @@
-<form fxLayout="column">
+<form [formGroup]="usuarioForm" fxLayout="column">
 
   <mat-form-field fxFlex="100">
-    <input matInput placeholder="Nome">
+    <input matInput formControlName="nome" placeholder="Nome">
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="E-mail">
+    <input matInput formControlName="email" placeholder="E-mail">
   </mat-form-field>
 
   <div>
     <mat-form-field fxFlex="49">
-      <input matInput placeholder="Login">
+      <input matInput formControlName="login" placeholder="Login">
     </mat-form-field>
   
     <mat-form-field fxFlex="49" fxFlexOffset="2">
-      <mat-select placeholder="Perfil">
-        <mat-option *ngFor="let perfil of perfis" [value]="perfil.id">{{perfil.descricao}}</mat-option>
+      <mat-select formControlName="perfil" placeholder="Perfil">
+        <mat-option *ngFor="let perfil of perfis" [value]="perfil.id">
+          {{perfil.descricao}}
+        </mat-option>
       </mat-select>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field fxFlex="49">
-      <input type="password" matInput placeholder="Senha">
+      <input type="password" matInput formControlName="senha" placeholder="Senha">
     </mat-form-field>
 
     <mat-form-field fxFlex="49" fxFlexOffset="2">
-      <input type="password" matInput placeholder="Confirmação">
+      <input type="password" matInput formControlName="confirmacao" placeholder="Confirmação">
     </mat-form-field>
   </div>
 
@@ -35,7 +37,7 @@
       Cadastrar
     </button>
 
-    <button type="button" mat-raised-button color="warn" matTooltip="Cancelar">
+    <button type="button" mat-raised-button color="warn" matTooltip="Cancelar" routerLink="/main/usuario/consulta">
       Cancelar
     </button>
   </div>
