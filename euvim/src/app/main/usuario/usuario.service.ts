@@ -23,7 +23,7 @@ export class UsuarioService {
   remove(id) {
     let index = this.mock.findIndex(item => item.id == id);
     if (index > -1) {
-      this.mock = this.mock.splice(index, 1);
+      this.mock.splice(index, 1);
     }
   }
 
