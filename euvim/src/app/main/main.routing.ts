@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { MainComponent } from './main.component';
 import { ConsultaComponent } from './usuario/consulta/consulta.component';
 import { FormularioComponent } from './usuario/formulario/formulario.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
     imports: [
@@ -10,14 +11,22 @@ import { FormularioComponent } from './usuario/formulario/formulario.component';
             { path: 'main', 
               component: MainComponent,
               children: [
-                  {
-                      path: 'usuario/consulta',
-                      component: ConsultaComponent
-                  },
-                  {
+                {
+                    path: 'home',
+                    component: HomeComponent
+                },
+                {
+                    path: 'usuario/consulta',
+                    component: ConsultaComponent
+                },
+                {
                     path: 'usuario/adicionar',
                     component: FormularioComponent
-                  }
+                },
+                {
+                    path: 'usuario/editar/:id',
+                    component: FormularioComponent
+                }
               ]
             }
         ])

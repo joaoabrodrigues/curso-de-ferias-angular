@@ -2,7 +2,7 @@
   <mat-sidenav #sidenav>
   <a mat-button style="height: 0; position: absolute;"></a>  
       <mat-nav-list>
-        <mat-list-item routerLink="/main" (click)="sidenav.close()">
+        <mat-list-item routerLink="/main/home" (click)="sidenav.close()">
             <button mat-icon-button >
                 <mat-icon>home</mat-icon>
             </button>
@@ -35,6 +35,6 @@
       <span>Eu vim</span>
   </mat-toolbar>
   <mat-card id="content">
-      <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </mat-card>
 </mat-sidenav-container>

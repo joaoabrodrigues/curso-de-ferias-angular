@@ -22,6 +22,7 @@ import { FormsModule,
          ReactiveFormsModule, 
          FormBuilder } from '@angular/forms';
 import { UsuarioService } from './usuario/usuario.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   imports: [
@@ -46,7 +47,7 @@ import { UsuarioService } from './usuario/usuario.service';
   declarations: [
     MainComponent, 
     ConsultaComponent, 
-    FormularioComponent
+    FormularioComponent, HomeComponent
   ],
   providers: [FormBuilder, UsuarioService]
 })
