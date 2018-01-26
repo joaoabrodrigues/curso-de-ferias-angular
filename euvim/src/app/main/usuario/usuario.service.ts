@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
 export class UsuarioService {
   
   private mock = [  
-    {id: 1, nome: 'Nome 1', login: 'login1', email: 'email1@gmail.com', perfil: 'Perfil 1'},
-    {id: 2, nome: 'Nome 2', login: 'login2', email: 'email2@gmail.com', perfil: 'Perfil 2'},
-    {id: 3, nome: 'Nome 3', login: 'login3', email: 'email3@gmail.com', perfil: 'Perfil 3'}
+    {id: 1, nome: 'Nome 1', login: 'login1', email: 'email1@gmail.com', perfil: 'ADMINISTRADOR', senha: '', confirmacao: ''},
+    {id: 2, nome: 'Nome 2', login: 'login2', email: 'email2@gmail.com', perfil: 'ALUNO', senha: '', confirmacao: ''},
+    {id: 3, nome: 'Nome 3', login: 'login3', email: 'email3@gmail.com', perfil: 'PROFESSOR', senha: '', confirmacao: ''}
   ];
 
   constructor() { }
@@ -16,11 +16,11 @@ export class UsuarioService {
     this.mock.forEach(item => {
       insertId = insertId > item.id ? insertId : item.id;
     })
-    usuario.id = insertId;
+    usuario.id = insertId+1;
     this.mock.push(usuario);
   }
 
-  remove(id) {
+  delete(id) {
     let index = this.mock.findIndex(item => item.id == id);
     if (index > -1) {
       this.mock.splice(index, 1);

@@ -59,8 +59,8 @@
   <br/>
 
   <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between">
-    <button type="button" mat-raised-button color="primary" matTooltip="Cadastrar" [disabled]="usuarioForm.invalid">
-      Cadastrar
+    <button type="button" mat-raised-button color="primary" matTooltip="Cadastrar" [disabled]="usuarioForm.invalid" (click)="save()">
+      Salvar
     </button>
 
     <button type="button" mat-raised-button color="warn" matTooltip="Cancelar" routerLink="/main/usuario/consulta">

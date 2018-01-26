@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EqualsPasswordValidator } from '../../../validators/EqualsPasswordValidator';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-formulario',
@@ -8,6 +10,7 @@ import { EqualsPasswordValidator } from '../../../validators/EqualsPasswordValid
   styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent implements OnInit {
+  private id;
   public usuarioForm: FormGroup;
   public perfis = [
     {id: 'ADMINISTRADOR', descricao: 'Administrador'},
@@ -15,11 +18,35 @@ export class FormularioComponent implements OnInit {
     {id: 'PROFESSOR', descricao: 'Professor'}
   ];
 
-  constructor(private _formBuilder: FormBuilder){
+  constructor(private _formBuilder: FormBuilder, 
+              private _activatedRouter: ActivatedRoute, 
+              private _usuarioService: UsuarioService,
+              private _router: Router) {
     this.createForm();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this._activatedRouter.params.subscribe(params => {
+      this.id = params.id;
+      if (this.id) {
+        this.usuarioForm.setValue(this._usuarioService.getOne(this.id));
+        this.usuarioForm.get('senha').setValidators(null);
+        this.usuarioForm.get('confirmacao').setValidators(null);
+      }
+    })
+  }
+
+  public save() {
+    if(this.usuarioForm.valid) {
+      if(this.id){
+        this._usuarioService.edit(this.usuarioForm.value);
+      } else {
+        this._usuarioService.add(this.usuarioForm.value);
+      }
+      this.usuarioForm.reset();
+      this._router.navigate(['/main/usuario/consulta']);
+    }
+  }
 
   createForm() {
     this.usuarioForm = this._formBuilder.group({
@@ -33,6 +60,5 @@ export class FormularioComponent implements OnInit {
     },{
       validator : EqualsPasswordValidator.validate("senha", "confirmacao")
     })
-}
-
+  }
 }
