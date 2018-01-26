@@ -23,6 +23,7 @@ import { FormsModule,
          FormBuilder } from '@angular/forms';
 import { UsuarioService } from './usuario/usuario.service';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -42,14 +43,15 @@ import { HomeComponent } from './home/home.component';
     MatSelectModule,
     FlexLayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     MainComponent, 
     ConsultaComponent, 
     FormularioComponent, HomeComponent
   ],
-  providers: [FormBuilder, UsuarioService]
+  providers: [FormBuilder, UsuarioService, HttpClient]
 })
 
 export class MainModule { }
