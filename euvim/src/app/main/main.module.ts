@@ -21,6 +21,7 @@ import { MatSidenavModule,
 import { FormsModule, 
          ReactiveFormsModule, 
          FormBuilder } from '@angular/forms';
+import { UsuarioService } from './usuario/usuario.service';
 
 @NgModule({
   imports: [
@@ -47,7 +48,7 @@ import { FormsModule,
     ConsultaComponent, 
     FormularioComponent
   ],
-  providers: [FormBuilder]
+  providers: [FormBuilder, UsuarioService]
 })
 
 export class MainModule { }
