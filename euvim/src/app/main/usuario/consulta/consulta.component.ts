@@ -25,13 +25,13 @@ export class ConsultaComponent implements OnInit {
   }
   
   private getAll() {
-    let users = this._usuarioService.getAll();
-    this.dataSource = new MatTableDataSource<any>(users);
+    let users = this._usuarioService.getAll().subscribe(suc => {
+      this.dataSource = new MatTableDataSource<any>(suc);
+    });
   }
 
   public delete(id) {
-    this._usuarioService.delete(id);
-    this.getAll();
+    this._usuarioService.delete(id).subscribe(suc => { this.getAll() });
   }
 
   public edit(id) {

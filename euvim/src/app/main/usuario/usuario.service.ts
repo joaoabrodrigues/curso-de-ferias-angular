@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class UsuarioService {
@@ -9,37 +11,29 @@ export class UsuarioService {
     {id: 3, nome: 'Nome 3', login: 'login3', email: 'email3@gmail.com', perfil: 'PROFESSOR', senha: '', confirmacao: ''}
   ];
 
-  constructor() { }
+  private _version = '/api/v1';
+  private _userURL = environment.url + this._version + '/usuarios';
+
+  constructor(private _http: HttpClient) { }
 
   add(usuario) {
-    let insertId = 0;
-    this.mock.forEach(item => {
-      insertId = insertId > item.id ? insertId : item.id;
-    })
-    usuario.id = insertId+1;
-    this.mock.push(usuario);
-  }
-
-  delete(id) {
-    let index = this.mock.findIndex(item => item.id == id);
-    if (index > -1) {
-      this.mock.splice(index, 1);
-    }
-  }
-
-  getAll() {
-    return this.mock;
-  }
-
-  getOne(id){
-    return this.mock.find(item => item.id == id);
+    return this._http.post(this._userURL, usuario, { responseType: 'text' });
   }
 
   edit(usuario) {
-    let index = this.mock.findIndex(item => item.id == usuario.id);
-    if (index > -1) { 
-      this.mock[index] = usuario;
-    }
+    return this._http.put(this._userURL + '/' + usuario.id, usuario, { responseType: 'text' });
+  }
+
+  getOne(id){
+    return this._http.get<any>(this._userURL + '/' + id);
+  }
+
+  getAll() {
+    return this._http.get<Array<any>>(this._userURL);
+  }
+
+  delete(id) {
+    return this._http.delete(this._userURL + '/' + id, { responseType: 'text'});
   }
 
 }

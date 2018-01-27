@@ -29,9 +29,14 @@ export class FormularioComponent implements OnInit {
     this._activatedRouter.params.subscribe(params => {
       this.id = params.id;
       if (this.id) {
-        this.usuarioForm.setValue(this._usuarioService.getOne(this.id));
-        this.usuarioForm.get('senha').setValidators(null);
-        this.usuarioForm.get('confirmacao').setValidators(null);
+          this._usuarioService.getOne(this.id).subscribe(retorno => {
+          retorno.senha = null;
+          retorno.confirmacao = null;
+          delete retorno.Urlfoto;
+          this.usuarioForm.get('senha').setValidators(null);
+          this.usuarioForm.get('confirmacao').setValidators(null);
+          this.usuarioForm.setValue(retorno);
+        });
       }
     })
   }
@@ -39,12 +44,16 @@ export class FormularioComponent implements OnInit {
   public save() {
     if(this.usuarioForm.valid) {
       if(this.id){
-        this._usuarioService.edit(this.usuarioForm.value);
+        this._usuarioService.edit(this.usuarioForm.value).subscribe(suc => {
+          this.usuarioForm.reset();
+          this._router.navigate(['/main/usuario/consulta']);
+        });
       } else {
-        this._usuarioService.add(this.usuarioForm.value);
+        this._usuarioService.add(this.usuarioForm.value).subscribe(suc => {
+          this.usuarioForm.reset();
+          this._router.navigate(['/main/usuario/consulta']);
+        });
       }
-      this.usuarioForm.reset();
-      this._router.navigate(['/main/usuario/consulta']);
     }
   }
 
