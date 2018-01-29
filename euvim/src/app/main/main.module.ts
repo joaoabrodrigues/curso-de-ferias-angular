@@ -9,17 +9,16 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { MatSidenavModule,
          MatButtonModule,
          MatIconModule,
-         MatListModule, 
-         MatToolbarModule, 
+         MatListModule,
+         MatToolbarModule,
          MatCardModule,
          MatTableModule,
-         MatFormFieldModule,
-         MatInputModule, 
+         MatInputModule,
          MatTooltipModule,
-         MatOptionModule, 
+         MatOptionModule,
          MatSelectModule } from '@angular/material';
-import { FormsModule, 
-         ReactiveFormsModule, 
+import { FormsModule,
+         ReactiveFormsModule,
          FormBuilder } from '@angular/forms';
 import { UsuarioService } from './usuario/usuario.service';
 import { HomeComponent } from './home/home.component';
@@ -47,9 +46,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     HttpClientModule
   ],
   declarations: [
-    MainComponent, 
-    ConsultaComponent, 
-    FormularioComponent, HomeComponent
+    MainComponent,
+    ConsultaComponent,
+    FormularioComponent,
+    HomeComponent
   ],
   providers: [FormBuilder, UsuarioService, HttpClient]
 })

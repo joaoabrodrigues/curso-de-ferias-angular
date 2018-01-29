@@ -12,20 +12,20 @@ export class ConsultaComponent implements OnInit {
   public displayedColumns = ['nome', 'login', 'email', 'perfil', 'id'];
   public dataSource = null;
 
-  constructor(private _usuarioService:UsuarioService, private _router:Router) { }
+  constructor(private _usuarioService: UsuarioService, private _router: Router) { }
 
   ngOnInit() {
     this.getAll();
-  } 
+  }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
-  
+
   private getAll() {
-    let users = this._usuarioService.getAll().subscribe(suc => {
+    const users = this._usuarioService.getAll().subscribe(suc => {
       this.dataSource = new MatTableDataSource<any>(suc);
     });
   }

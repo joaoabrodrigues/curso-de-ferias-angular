@@ -18,8 +18,8 @@ export class FormularioComponent implements OnInit {
     {id: 'PROFESSOR', descricao: 'Professor'}
   ];
 
-  constructor(private _formBuilder: FormBuilder, 
-              private _activatedRouter: ActivatedRoute, 
+  constructor(private _formBuilder: FormBuilder,
+              private _activatedRouter: ActivatedRoute,
               private _usuarioService: UsuarioService,
               private _router: Router) {
     this.createForm();
@@ -32,18 +32,18 @@ export class FormularioComponent implements OnInit {
           this._usuarioService.getOne(this.id).subscribe(retorno => {
           retorno.senha = null;
           retorno.confirmacao = null;
-          delete retorno.Urlfoto;
+          delete retorno.urlFoto;
           this.usuarioForm.get('senha').setValidators(null);
           this.usuarioForm.get('confirmacao').setValidators(null);
           this.usuarioForm.setValue(retorno);
         });
       }
-    })
+    });
   }
 
   public save() {
-    if(this.usuarioForm.valid) {
-      if(this.id){
+    if (this.usuarioForm.valid) {
+      if (this.id) {
         this._usuarioService.edit(this.usuarioForm.value).subscribe(suc => {
           this.usuarioForm.reset();
           this._router.navigate(['/main/usuario/consulta']);
@@ -66,8 +66,8 @@ export class FormularioComponent implements OnInit {
       perfil: ['', Validators.required],
       senha: ['', Validators.required],
       confirmacao: ['', Validators.required]
-    },{
-      validator : EqualsPasswordValidator.validate("senha", "confirmacao")
-    })
+    }, {
+      validator : EqualsPasswordValidator.validate('senha', 'confirmacao')
+    });
   }
 }
