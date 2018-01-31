@@ -18,6 +18,10 @@ import { HomeComponent } from './home/home.component';
                 {
                     path: 'usuario',
                     loadChildren: './usuario/usuario.module#UsuarioModule'
+                },
+                {
+                    path: 'disciplina',
+                    loadChildren: './disciplina/disciplina.module#DisciplinaModule'
                 }
               ]
             }

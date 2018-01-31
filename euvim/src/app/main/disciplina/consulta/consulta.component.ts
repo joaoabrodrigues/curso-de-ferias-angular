@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-import { UsuarioService } from '../usuario.service';
+import { DisciplinaService } from '../disciplina.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./consulta.component.scss']
 })
 export class ConsultaComponent implements OnInit {
-  public displayedColumns = ['nome', 'login', 'email', 'perfil', 'id'];
+  public displayedColumns = ['descricao', 'instrutores', 'dataInicio', 'dataTermino', 'segmento', 'urlLogo', 'id'];
   public dataSource = null;
 
-  constructor(private _usuarioService: UsuarioService, private _router: Router) { }
+  constructor(private _disciplinaService: DisciplinaService, private _router: Router) { }
 
   ngOnInit() {
     this.getAll();
@@ -25,16 +25,16 @@ export class ConsultaComponent implements OnInit {
   }
 
   private getAll() {
-    this._usuarioService.getAll().subscribe(suc => {
+    this._disciplinaService.getAll().subscribe(suc => {
       this.dataSource = new MatTableDataSource<any>(suc);
     });
   }
 
   public delete(id) {
-    this._usuarioService.delete(id).subscribe(suc => { this.getAll() });
+    this._disciplinaService.delete(id).subscribe(suc => { this.getAll() });
   }
 
   public edit(id) {
-    this._router.navigate(['/main/usuario/editar', id]);
+    this._router.navigate(['/main/disciplina/editar', id]);
   }
 }
