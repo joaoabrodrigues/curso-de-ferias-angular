@@ -16,16 +16,8 @@ import { HomeComponent } from './home/home.component';
                     component: HomeComponent
                 },
                 {
-                    path: 'usuario/consulta',
-                    component: ConsultaComponent
-                },
-                {
-                    path: 'usuario/adicionar',
-                    component: FormularioComponent
-                },
-                {
-                    path: 'usuario/editar/:id',
-                    component: FormularioComponent
+                    path: 'usuario',
+                    loadChildren: './usuario/usuario.module#UsuarioModule'
                 }
               ]
             }
