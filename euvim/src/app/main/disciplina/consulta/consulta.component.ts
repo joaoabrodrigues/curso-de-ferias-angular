@@ -3,6 +3,7 @@ import { MatTableDataSource, MatDialog } from '@angular/material';
 import { DisciplinaService } from '../disciplina.service';
 import { Router } from '@angular/router';
 import { ProfessorComponent } from '../professor/professor.component';
+import { QrcodeComponent } from '../qrcode/qrcode.component';
 
 @Component({
   selector: 'app-consulta',
@@ -45,6 +46,15 @@ export class ConsultaComponent implements OnInit {
     this._dialog.open(ProfessorComponent, {
       width: '350px',
       data: { professores : listaProfessores }
+    });
+  }
+
+  showQrCode(disciplina) {
+    this._dialog.open(QrcodeComponent, {
+      width: '260px',
+      data: { id: disciplina.id,
+              descricao : disciplina.descricao,
+              data: new Date() }
     });
   }
 }

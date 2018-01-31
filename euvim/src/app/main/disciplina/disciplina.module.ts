@@ -30,6 +30,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ProfessorService } from './professor.service';
 import { ProfessorComponent } from './professor/professor.component';
+import { QrcodeComponent } from './qrcode/qrcode.component';
 
 @NgModule({
   imports: [
@@ -55,8 +56,8 @@ import { ProfessorComponent } from './professor/professor.component';
     HttpClientModule,
     MatDialogModule
   ],
-  declarations: [ConsultaComponent, FormularioComponent, ProfessorComponent],
-  entryComponents: [ProfessorComponent],
+  declarations: [ConsultaComponent, FormularioComponent, ProfessorComponent, QrcodeComponent],
+  entryComponents: [ProfessorComponent, QrcodeComponent],
   providers: [FormBuilder,
               DisciplinaService,
               HttpClient,

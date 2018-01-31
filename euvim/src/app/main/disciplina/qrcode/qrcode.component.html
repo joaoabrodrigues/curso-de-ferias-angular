@@ -1,0 +1,9 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Presença no dia {{ data.data | date: 'dd/MM/yyyy' }}</mat-card-title>
+    <mat-card-subtitle>Curso: {{ data.descricao }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+      <img [src]="qrCode"/>
+  </mat-card-content>
+</mat-card>

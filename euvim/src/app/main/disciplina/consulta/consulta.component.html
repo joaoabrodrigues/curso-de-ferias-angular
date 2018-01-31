@@ -36,12 +36,17 @@
 
       <ng-container matColumnDef="urlLogo">
         <mat-header-cell *matHeaderCellDef> Logo </mat-header-cell>
-        <mat-cell *matCellDef="let disciplina"> {{disciplina.urlLogo}} </mat-cell>
+        <mat-cell *matCellDef="let disciplina">
+          <img class="logo" src="{{disciplina.urlLogo}}">
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="id">
           <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
           <mat-cell *matCellDef="let disciplina">
+            <button mat-icon-button matTooltip="Mostrar QrCode" (click)="showQrCode(disciplina)">
+                <mat-icon aria-label="Mostrar QrCode">code</mat-icon>
+            </button>
             <button mat-icon-button color="primary" matTooltip="Editar" (click)="edit(disciplina.id)">
               <mat-icon aria-label="Editar">edit</mat-icon>
             </button>
