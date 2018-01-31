@@ -22,7 +22,7 @@
 
   <div>
     <mat-form-field fxFlex="49">
-      <input matInput formControlName="dataInicio" [matDatepicker]="dataInicio" placeholder="Selecione a data">
+      <input matInput readonly formControlName="dataInicio" [matDatepicker]="dataInicio" placeholder="Selecione a data">
       <mat-datepicker-toggle matSuffix [for]="dataInicio"></mat-datepicker-toggle>
       <mat-datepicker #dataInicio></mat-datepicker>
       <mat-error *ngIf="disciplinaForm.controls['dataInicio'].hasError('required')">
@@ -31,7 +31,7 @@
     </mat-form-field>
 
     <mat-form-field fxFlex="49" fxFlexOffset="2">
-      <input matInput formControlName="dataTermino" [matDatepicker]="dataTermino" placeholder="Selecione a data">
+      <input matInput readonly formControlName="dataTermino" [matDatepicker]="dataTermino" placeholder="Selecione a data">
       <mat-datepicker-toggle matSuffix [for]="dataTermino"></mat-datepicker-toggle>
       <mat-datepicker #dataTermino></mat-datepicker>
       <mat-error *ngIf="disciplinaForm.controls['dataTermino'].hasError('required')">
