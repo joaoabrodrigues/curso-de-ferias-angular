@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
 import { DisciplinaService } from '../disciplina.service';
 import { Router } from '@angular/router';
+import { ProfessorComponent } from '../professor/professor.component';
 
 @Component({
   selector: 'app-consulta',
@@ -12,7 +13,9 @@ export class ConsultaComponent implements OnInit {
   public displayedColumns = ['descricao', 'professores', 'dataInicio', 'dataTermino', 'segmento', 'urlLogo', 'id'];
   public dataSource = null;
 
-  constructor(private _disciplinaService: DisciplinaService, private _router: Router) { }
+  constructor(private _disciplinaService: DisciplinaService,
+              private _router: Router,
+              private _dialog: MatDialog) { }
 
   ngOnInit() {
     this.getAll();
@@ -31,10 +34,17 @@ export class ConsultaComponent implements OnInit {
   }
 
   public delete(id) {
-    this._disciplinaService.delete(id).subscribe(suc => { this.getAll() });
+    this._disciplinaService.delete(id).subscribe(suc => { this.getAll(); });
   }
 
   public edit(id) {
     this._router.navigate(['/main/disciplina/editar', id]);
+  }
+
+  exibirProfessores(listaProfessores) {
+    this._dialog.open(ProfessorComponent, {
+      width: '350px',
+      data: { professores : listaProfessores }
+    });
   }
 }

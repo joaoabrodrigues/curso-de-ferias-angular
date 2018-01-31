@@ -15,9 +15,10 @@ import { MatSidenavModule,
          MatTooltipModule,
          MatOptionModule,
          MatSelectModule,
-         MatDatepickerModule, 
+         MatDatepickerModule,
          MAT_DATE_LOCALE,
-         MatNativeDateModule} from '@angular/material';
+         MatNativeDateModule,
+         MatDialogModule } from '@angular/material';
 
 import { FormsModule,
          ReactiveFormsModule,
@@ -28,6 +29,7 @@ import { DisciplinaService } from './disciplina.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ProfessorService } from './professor.service';
+import { ProfessorComponent } from './professor/professor.component';
 
 @NgModule({
   imports: [
@@ -50,9 +52,11 @@ import { ProfessorService } from './professor.service';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
-  declarations: [ConsultaComponent, FormularioComponent],
+  declarations: [ConsultaComponent, FormularioComponent, ProfessorComponent],
+  entryComponents: [ProfessorComponent],
   providers: [FormBuilder,
               DisciplinaService,
               HttpClient,

@@ -9,9 +9,13 @@ export class ProfessorService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  professores() {
-    let httpParams = new HttpParams().set('tipo', 'PROFESSOR');
+  getAll() {
+    const httpParams = new HttpParams().set('tipo', 'PROFESSOR');
     return this._httpClient.get<Array<any>>(this._userURL, { params: httpParams });
+  }
+
+  getOne(id) {
+    return this._httpClient.get<any>(this._userURL + '/' + id);
   }
 
 }

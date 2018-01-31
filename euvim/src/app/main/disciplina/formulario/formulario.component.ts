@@ -33,7 +33,7 @@ export class FormularioComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._professorService.professores().subscribe(suc => {
+    this._professorService.getAll().subscribe(suc => {
       this.professores = suc;
       this.obterRegistroEdicao();
     });
@@ -44,14 +44,14 @@ export class FormularioComponent implements OnInit {
       this.id = params.id;
       if (this.id) {
           this._disciplinaService.getOne(this.id).subscribe(retorno => {
-            let resultado = Object.assign({},retorno);
+            const resultado = Object.assign({}, retorno);
             resultado.professores = [];
             this.disciplinaForm.setValue(resultado);
             retorno.professores.forEach(element => {
-              this.professorSelecionado = this.professores.find(p => p.id == element);
+              this.professorSelecionado = this.professores.find(p => p.id === element);
               this.adicionarProfessor();
             });
-        }); 
+        });
       }
     });
   }
@@ -90,7 +90,7 @@ export class FormularioComponent implements OnInit {
 
   adicionarProfessor() {
     if (this.professorSelecionado) {
-      let listProfessores = <FormArray>this.disciplinaForm.get("professores");
+      const listProfessores = <FormArray>this.disciplinaForm.get('professores');
       listProfessores.value.push(this.professorSelecionado.id);
       this.professorSelecionado.selecionado = true;
       delete this.professorSelecionado;
@@ -98,16 +98,16 @@ export class FormularioComponent implements OnInit {
   }
 
   nomeProfessor(id) {
-    let professor = this.professores.find(p => p.id == id)
+    const professor = this.professores.find(p => p.id === id);
     return professor ? professor.nome : 'Não localizado';
   }
 
   removerProfessor(id) {
-    let listProfessores = <FormArray>this.disciplinaForm.get("professores");
-    let index = listProfessores.value.findIndex(p => p == id);
+    const listProfessores = <FormArray>this.disciplinaForm.get('professores');
+    const index = listProfessores.value.findIndex(p => p === id);
     if (index > -1) {
       listProfessores.value.splice(index, 1);
-      this.professores.find(p => p.id == id).selecionado = false;
+      this.professores.find(p => p.id === id).selecionado = false;
     }
   }
 }
