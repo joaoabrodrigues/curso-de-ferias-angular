@@ -25,7 +25,7 @@ import { FormsModule,
          FormBuilder } from '@angular/forms';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DisciplinaService } from './disciplina.service';
+import { DisciplinaService } from '../services/disciplina.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ProfessorService } from './professor.service';

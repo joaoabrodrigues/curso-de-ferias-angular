@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatDialog } from '@angular/material';
-import { DisciplinaService } from '../disciplina.service';
+import { DisciplinaService } from '../../services/disciplina.service';
 import { Router } from '@angular/router';
 import { ProfessorComponent } from '../professor/professor.component';
 import { QrcodeComponent } from '../qrcode/qrcode.component';

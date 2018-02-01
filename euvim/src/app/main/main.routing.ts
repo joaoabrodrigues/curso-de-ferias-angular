@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
-            { path: 'main', 
+            { path: 'main',
               component: MainComponent,
               children: [
                 {
@@ -22,7 +22,11 @@ import { HomeComponent } from './home/home.component';
                 {
                     path: 'disciplina',
                     loadChildren: './disciplina/disciplina.module#DisciplinaModule'
-                }
+                },
+                {
+                    path: 'relatorio',
+                    loadChildren: './relatorio/relatorio.module#RelatorioModule'
+              }
               ]
             }
         ])
