@@ -43,4 +43,8 @@ export class PresencaComponent implements OnInit {
     });
   }
 
+  abrirCalendario(dtInicial) {
+    console.log('abrir calendario');
+  }
+
 }
