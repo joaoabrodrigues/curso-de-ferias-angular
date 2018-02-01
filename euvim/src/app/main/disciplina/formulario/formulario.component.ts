@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DisciplinaService } from '../disciplina.service';
 import { ProfessorService } from '../professor.service';
@@ -11,14 +11,16 @@ import { ProfessorService } from '../professor.service';
 })
 export class FormularioComponent implements OnInit {
   public segmentos = [
-    { id: 'Backend', descricao: 'Backend' },
-    { id: 'Front-end', descricao: 'Frontend' },
-    { id: 'Mobile', descricao: 'Ionic' }
+    { id: 'BACKEND', descricao: 'Backend' },
+    { id: 'FRONTEND', descricao: 'Frontend' },
+    { id: 'MOBILE', descricao: 'Ionic' }
   ];
 
   public disciplinaForm: FormGroup;
 
   public professores = [];
+
+  public professorSelecionado;
 
   private id = null;
 
@@ -33,19 +35,28 @@ export class FormularioComponent implements OnInit {
   ngOnInit() {
     this._professorService.professores().subscribe(suc => {
       this.professores = suc;
+      this.obterRegistroEdicao();
     });
+  }
 
+  private obterRegistroEdicao(){
     this._activatedRouter.params.subscribe(params => {
       this.id = params.id;
       if (this.id) {
           this._disciplinaService.getOne(this.id).subscribe(retorno => {
-          this.disciplinaForm.setValue(retorno);
-        });
+            let resultado = Object.assign({},retorno);
+            resultado.professores = [];
+            this.disciplinaForm.setValue(resultado);
+            retorno.professores.forEach(element => {
+              this.professorSelecionado = this.professores.find(p => p.id == element);
+              this.adicionarProfessor();
+            });
+        }); 
       }
     });
   }
 
-  public save() {
+  save() {
     if (this.disciplinaForm.valid) {
       if (this.id) {
         this._disciplinaService.edit(this.disciplinaForm.value).subscribe(suc => {
@@ -65,11 +76,38 @@ export class FormularioComponent implements OnInit {
     this.disciplinaForm = this._formBuilder.group({
       id: '',
       descricao: ['', Validators.required],
-      professores: ['', this._formBuilder.array([]), Validators.required],
+      professores: this._formBuilder.array([]),
       dataInicio: ['', Validators.required],
       dataTermino: ['', Validators.required],
       segmento: ['', Validators.required],
       urlLogo: ['']
     });
+  }
+
+  notFound(event) {
+    event.target.src = 'https://media.giphy.com/media/gngO1gmBhS9na/giphy.gif';
+  }
+
+  adicionarProfessor() {
+    if (this.professorSelecionado) {
+      let listProfessores = <FormArray>this.disciplinaForm.get("professores");
+      listProfessores.value.push(this.professorSelecionado.id);
+      this.professorSelecionado.selecionado = true;
+      delete this.professorSelecionado;
+    }
+  }
+
+  nomeProfessor(id) {
+    let professor = this.professores.find(p => p.id == id)
+    return professor ? professor.nome : 'Não localizado';
+  }
+
+  removerProfessor(id) {
+    let listProfessores = <FormArray>this.disciplinaForm.get("professores");
+    let index = listProfessores.value.findIndex(p => p == id);
+    if (index > -1) {
+      listProfessores.value.splice(index, 1);
+      this.professores.find(p => p.id == id).selecionado = false;
+    }
   }
 }
