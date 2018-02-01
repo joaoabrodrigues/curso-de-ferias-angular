@@ -37,7 +37,7 @@
       <ng-container matColumnDef="urlLogo">
         <mat-header-cell *matHeaderCellDef> Logo </mat-header-cell>
         <mat-cell *matCellDef="let disciplina">
-          <img class="logo" src="{{disciplina.urlLogo}}">
+          <img class="logo" src="{{disciplina.urlLogo}}" (error)="notFound($event)">
         </mat-cell>
       </ng-container>
 

@@ -57,4 +57,8 @@ export class ConsultaComponent implements OnInit {
               data: new Date() }
     });
   }
+
+  notFound(event) {
+    event.target.src = 'https://media.giphy.com/media/gngO1gmBhS9na/giphy.gif';
+  }
 }
