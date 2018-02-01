@@ -11,7 +11,7 @@ export class UsuarioService {
     {id: 3, nome: 'Nome 3', login: 'login3', email: 'email3@gmail.com', perfil: 'PROFESSOR', senha: '', confirmacao: ''}
   ];
   
-  private _userURL = environment.url + environment.url + '/usuarios';
+  private _userURL = environment.url + environment.version + '/usuarios';
 
   constructor(private _http: HttpClient) { }
 

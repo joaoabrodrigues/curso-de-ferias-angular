@@ -27,7 +27,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DisciplinaService } from './disciplina.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { InstrutorService } from './instrutor.service';
+import { ProfessorService } from './professor.service';
 
 @NgModule({
   imports: [
@@ -56,7 +56,7 @@ import { InstrutorService } from './instrutor.service';
   providers: [FormBuilder,
               DisciplinaService,
               HttpClient,
-              InstrutorService,
+              ProfessorService,
               { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }
             ]
 })

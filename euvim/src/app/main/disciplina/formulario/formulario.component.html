@@ -49,13 +49,13 @@
 
   <div>
     <mat-form-field fxFlex="70">
-      <mat-select  formControlName="instrutores" placeholder="Instrutores">
-          <mat-option *ngFor="let instrutor of instrutores" [value]="instrutor.id">
-              {{ instrutor.nome }}
+      <mat-select  formControlName="professores" placeholder="Professores">
+          <mat-option *ngFor="let professor of professores" [value]="professor.id">
+              {{ professor.nome }}
           </mat-option>
       </mat-select>
-      <mat-error *ngIf="disciplinaForm.controls['instrutores'].hasError('required')">
-          Instrutor é obrigatório
+      <mat-error *ngIf="disciplinaForm.controls['professores'].hasError('required')">
+          Professor é obrigatório
       </mat-error>
     </mat-form-field>
     <button mat-mini-fab color="primary" fxFlexOffset="2">

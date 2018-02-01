@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./consulta.component.scss']
 })
 export class ConsultaComponent implements OnInit {
-  public displayedColumns = ['descricao', 'instrutores', 'dataInicio', 'dataTermino', 'segmento', 'urlLogo', 'id'];
+  public displayedColumns = ['descricao', 'professores', 'dataInicio', 'dataTermino', 'segmento', 'urlLogo', 'id'];
   public dataSource = null;
 
   constructor(private _disciplinaService: DisciplinaService, private _router: Router) { }
