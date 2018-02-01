@@ -34,7 +34,7 @@ export class PresencaComponent implements OnInit {
     });
   }
 
-  gerarRelatorio(){
+  gerarRelatorio() {
     this._relatorioService.listarPresencaPorDisciplina(this.form.value).subscribe(suc => {
       this.relatorio = suc;
     });

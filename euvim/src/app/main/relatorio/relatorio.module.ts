@@ -17,7 +17,8 @@ import { MatExpansionModule,
          MatInputModule,
          MatTooltipModule,
          MatNativeDateModule,
-         MatDialogModule} from '@angular/material';
+         MatDialogModule,
+         MAT_DATE_LOCALE} from '@angular/material';
 import { ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DisciplinaService } from '../services/disciplina.service';
@@ -46,7 +47,7 @@ import { RelatorioService } from './relatorio.service';
     HttpClientModule
   ],
   declarations: [PresencaComponent],
-  providers: [FormBuilder, DisciplinaService, RelatorioService, HttpClient]
+  providers: [FormBuilder, DisciplinaService, RelatorioService, HttpClient, { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }]
 })
 
 export class RelatorioModule { }

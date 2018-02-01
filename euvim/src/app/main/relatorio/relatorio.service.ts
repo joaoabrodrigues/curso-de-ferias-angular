@@ -6,7 +6,7 @@ import * as moment from 'moment';
 @Injectable()
 export class RelatorioService {
 
-  private _urlRelatorio = environment.url + environment.version + 'relatorio';
+  private _urlRelatorio = environment.url + environment.version + '/relatorio';
 
   constructor(private _httpClient: HttpClient) { }
 
