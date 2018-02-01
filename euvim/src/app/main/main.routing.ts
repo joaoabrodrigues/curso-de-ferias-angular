@@ -4,12 +4,15 @@ import { MainComponent } from './main.component';
 import { ConsultaComponent } from './usuario/consulta/consulta.component';
 import { FormularioComponent } from './usuario/formulario/formulario.component';
 import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
     imports: [
         RouterModule.forChild([
             { path: 'main',
               component: MainComponent,
+              canActivate: [AuthGuard],
+              canActivateChild: [AuthGuard],
               children: [
                 {
                     path: 'home',
@@ -27,10 +30,10 @@ import { HomeComponent } from './home/home.component';
                     path: 'relatorio',
                     loadChildren: './relatorio/relatorio.module#RelatorioModule'
               }
-              ]
-            }
-        ])
-    ]
+            ]
+          }
+    ])
+  ]
 })
 
 export class MainRouting { }

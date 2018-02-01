@@ -17,6 +17,7 @@ import { FormsModule,
          FormBuilder } from '@angular/forms';
 
 import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     MainComponent,
     HomeComponent
-  ]
+  ],
+  providers: [AuthGuard]
 })
 
 export class MainModule { }

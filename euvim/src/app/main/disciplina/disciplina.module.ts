@@ -26,11 +26,12 @@ import { FormsModule,
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DisciplinaService } from '../services/disciplina.service';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ProfessorService } from './professor.service';
 import { ProfessorComponent } from './professor/professor.component';
 import { QrcodeComponent } from './qrcode/qrcode.component';
+import { AuthInterceptorService } from '../services/auth.interceptor.service';
 
 @NgModule({
   imports: [
@@ -62,7 +63,12 @@ import { QrcodeComponent } from './qrcode/qrcode.component';
               DisciplinaService,
               HttpClient,
               ProfessorService,
-              { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }
+              { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+              {
+                provide: HTTP_INTERCEPTORS,
+                useClass: AuthInterceptorService,
+                multi: true
+              }
             ]
 })
 export class DisciplinaModule { }

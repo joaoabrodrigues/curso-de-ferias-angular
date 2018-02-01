@@ -22,8 +22,9 @@ import { FormsModule,
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UsuarioService } from './usuario.service';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { AuthInterceptorService } from '../services/auth.interceptor.service';
 
 @NgModule({
   imports: [
@@ -47,6 +48,13 @@ import { RouterModule } from '@angular/router';
     HttpClientModule
   ],
   declarations: [ConsultaComponent, FormularioComponent],
-  providers: [FormBuilder, UsuarioService, HttpClient]
+  providers: [FormBuilder,
+              UsuarioService,
+              HttpClient,
+              {
+                provide: HTTP_INTERCEPTORS,
+                useClass: AuthInterceptorService,
+                multi: true
+              }]
 })
 export class UsuarioModule { }
