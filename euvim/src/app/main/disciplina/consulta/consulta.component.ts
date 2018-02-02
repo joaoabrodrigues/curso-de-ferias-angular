@@ -31,6 +31,7 @@ export class ConsultaComponent implements OnInit {
   }
 
   private getAll() {
+    this._loadingService.callNextStatus(true);
     this._disciplinaService.getAll().subscribe(suc => {
       this.dataSource = new MatTableDataSource<any>(suc);
       this._loadingService.callNextStatus(false);
