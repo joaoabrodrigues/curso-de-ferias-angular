@@ -10,7 +10,8 @@ import { MatSidenavModule,
          MatIconModule,
          MatListModule,
          MatToolbarModule,
-         MatCardModule } from '@angular/material';
+         MatCardModule,
+         MatProgressBarModule} from '@angular/material';
 
 import { FormsModule,
          ReactiveFormsModule,
@@ -18,6 +19,7 @@ import { FormsModule,
 
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
+import { LoadingService } from './services/loading.service';
 
 @NgModule({
   imports: [
@@ -30,13 +32,14 @@ import { AuthGuard } from './auth.guard';
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatProgressBarModule
   ],
   declarations: [
     MainComponent,
     HomeComponent
   ],
-  providers: [AuthGuard]
+  providers: [AuthGuard, LoadingService]
 })
 
 export class MainModule { }
