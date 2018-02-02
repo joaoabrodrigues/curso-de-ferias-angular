@@ -25,6 +25,7 @@ import { UsuarioService } from './usuario.service';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthInterceptorService } from '../services/auth.interceptor.service';
+import { RequestErrorModule } from '../../request-error/request-error.module';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { AuthInterceptorService } from '../services/auth.interceptor.service';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RequestErrorModule
   ],
   declarations: [ConsultaComponent, FormularioComponent],
   providers: [FormBuilder,

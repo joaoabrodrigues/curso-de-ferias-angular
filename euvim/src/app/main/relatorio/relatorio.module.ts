@@ -25,6 +25,7 @@ import { DisciplinaService } from '../services/disciplina.service';
 import { RelatorioService } from './relatorio.service';
 import { ItemPresencaComponent } from './presenca/item-presenca/item-presenca.component';
 import { AuthInterceptorService } from '../services/auth.interceptor.service'
+import { RequestErrorModule } from '../../request-error/request-error.module';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { AuthInterceptorService } from '../services/auth.interceptor.service'
     MatListModule,
     MatDialogModule,
     MatExpansionModule,
-    HttpClientModule
+    HttpClientModule,
+    RequestErrorModule
   ],
   declarations: [PresencaComponent, ItemPresencaComponent],
   providers: [FormBuilder,

@@ -32,6 +32,7 @@ import { ProfessorService } from './professor.service';
 import { ProfessorComponent } from './professor/professor.component';
 import { QrcodeComponent } from './qrcode/qrcode.component';
 import { AuthInterceptorService } from '../services/auth.interceptor.service';
+import { RequestErrorModule } from '../../request-error/request-error.module';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { AuthInterceptorService } from '../services/auth.interceptor.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    RequestErrorModule
   ],
   declarations: [ConsultaComponent, FormularioComponent, ProfessorComponent, QrcodeComponent],
   entryComponents: [ProfessorComponent, QrcodeComponent],
